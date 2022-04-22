@@ -1,15 +1,30 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import '../styles/App.css';
 import { Preview } from './Preview';
 const App = () => {
+  const [Data,setData]=useState("hello world");
+  const [Padding,setPadding]=useState(5);
+  const [FontSize,setFontSize]=useState(10);
 
+
+  function getData(val){
+      setData(val.target.value);
+  }
+  function getPadding(val){
+    setPadding(val.target.value)
+  }
+  function getFontSize(val){
+    setFontSize(val.target.value)
+  }
   return (
     <div id="main">
       <div>
-        {/* add input elememnts inside here */}
+        Content <input id='contentInput' type="text" value={Data} onChange={getData}/><br />
+        Padding <input id='paddingInput' type="number" value={Padding} onChange={getPadding} /><br />
+        Font Size <input id='fontSizeInput' type="number" value={FontSize} onChange={getFontSize} />
       </div>
  
- {/* render Preview component here */}
+      <Preview content={Data} padding={Padding+'px'} fontSize={FontSize+'px'}/>
  
     </div>
   )
