@@ -10,18 +10,12 @@ const App = () => {
   function getData(val){
       setData(val.target.value);
   }
-  function getPadding(val){
-    setPadding(val.target.value)
-  }
-  function getFontSize(val){
-    setFontSize(val.target.value)
-  }
   return (
     <div id="main">
       <div>
         Content <input id='contentInput' type="text" value={Data} onChange={getData}/><br />
-        Padding <input id='paddingInput' type="number" value={Padding} onChange={getPadding} /><br />
-        Font Size <input id='fontSizeInput' type="number" value={FontSize} onChange={getFontSize} />
+        Padding <input id='paddingInput' type="number" value={Padding} onChange={(val)=>val.target.value<0?Padding:setPadding(val.target.value)} /><br />
+        Font Size <input id='fontSizeInput' type="number" value={FontSize} onChange={(val)=>val.target.value<0?FontSize:setFontSize(val.target.value)} />
       </div>
  
       <Preview content={Data} padding={Padding+'px'} fontSize={FontSize+'px'}/>
